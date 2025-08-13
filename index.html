@@ -3,200 +3,426 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>cards</title>
+  <title>Portafolio - Karol Morales</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
    
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    background: linear-gradient(135deg, #1d1f27, #3a0ca3);
-    color: white;
-    min-height: 100vh;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    body {
+      background: linear-gradient(135deg, #0f0f23, #1a0033, #2d0040, #3a0ca3);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-  }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(10px);
-  }
+    /* Header Section */
+    .header {
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(114, 9, 183, 0.2) 0%, transparent 70%);
+      z-index: 0;
+    }
 
-  .image-container img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-  }
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
 
-  .content {
-    padding: 1.2rem;
-    text-align: center;
-  }
+    .main-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(45deg, #f72585, #7209b7, #3f37c9, #4361ee);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientText 8s ease infinite, glow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 30px rgba(247, 37, 133, 0.3);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
 
-  .content h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #f8f8f8;
-    text-shadow: 1px 1px 4px #000;
-  }
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  .content button {
-    background: linear-gradient(135deg, #f72585, #7209b7);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 30px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 20px rgba(247, 37, 133, 0.4)); }
+      to { filter: drop-shadow(0 0 40px rgba(114, 9, 183, 0.6)); }
+    }
 
-  .content button:hover {
-    background: linear-gradient(135deg, #3f37c9, #4361ee);
-    transform: scale(1.05);
-  }
+    .subtitle {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 300;
+      color: #e0e0e0;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
 
-  @media (max-width: 768px) {
+    .ficha {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(247, 37, 133, 0.2), rgba(114, 9, 183, 0.2));
+      border: 2px solid rgba(247, 37, 133, 0.3);
+      border-radius: 25px;
+      padding: 0.8rem 2rem;
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      font-weight: 700;
+      color: #f72585;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(247, 37, 133, 0.2);
+      animation: pulse 3s ease-in-out infinite;
+      margin-top: 1rem;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(247, 37, 133, 0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(247, 37, 133, 0.4); }
+    }
+
+    /* Floating particles effect */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(247, 37, 133, 0.8), rgba(114, 9, 183, 0.4));
+      border-radius: 50%;
+      animation: float 20s linear infinite;
+    }
+
+    .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 2s; }
+    .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 4s; }
+    .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 6s; }
+    .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 8s; }
+    .particle:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-delay: 10s; }
+    .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 12s; }
+    .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 14s; }
+    .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 16s; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Main container */
+    .main-container {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(15px);
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(247, 37, 133, 0.1), rgba(114, 9, 183, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(247, 37, 133, 0.3);
+      border-color: rgba(247, 37, 133, 0.4);
+    }
+
+    .image-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .image-container img {
+      transform: scale(1.1);
+    }
+
+    .content {
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
     .content h2 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      color: #f8f8f8;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
     }
 
     .content button {
-      font-size: 0.95rem;
-      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, #f72585, #7209b7, #3f37c9);
+      background-size: 300% 300%;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(247, 37, 133, 0.3);
+      animation: buttonGradient 6s ease infinite;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-  }
+
+    @keyframes buttonGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .content button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(247, 37, 133, 0.5);
+      filter: brightness(1.2);
+    }
+
+    .content a {
+      text-decoration: none;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 2rem 1rem;
+      }
+
+      .main-container {
+        padding: 1rem;
+      }
+
+      .container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .content h2 {
+        font-size: 1.2rem;
+      }
+
+      .content button {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
  
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card superheroes">
-      <div class="image-container">
-        <img src="https://i5.walmartimages.com/asr/ed350031-c87e-48ad-a5b5-347da6668cc4_1.2e56bfe16e369ad1146e38c215d2ffbd.jpeg" alt="SUPERHEROES">
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <header class="header">
+    <div class="header-content">
+      <h1 class="main-title">PORTAFOLIO DE TRABAJOS</h1>
+      <p class="subtitle">Karol Morales</p>
+      <div class="ficha">FICHA: 2926160</div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="container">
+      <div class="card superheroes">
+        <div class="image-container">
+          <img src="https://i5.walmartimages.com/asr/ed350031-c87e-48ad-a5b5-347da6668cc4_1.2e56bfe16e369ad1146e38c215d2ffbd.jpeg" alt="SUPERHEROES">
+        </div>
+        <div class="content">
+          <h2>SUPERHEROES</h2>
+          <a href="https://superheroes-jzc1.onrender.com"><button>Leer más</button></a>
+        </div>
       </div>
-      <div class="content">
-        <h2>SUPERHEROES</h2>
-        <a href="https://superheroes-jzc1.onrender.com"><button>Leer más</button></a>
+
+      <div class="card quien-soy">
+        <div class="image-container">
+          <img src="https://midevocional.org/wp-content/uploads/2012/09/Quiensoyyo.png" alt="QUIEN SOY">
+        </div>
+        <div class="content">
+          <h2>QUIEN SOY</h2>
+          <a href="https://quien-soy-io24.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card curriculum">
+        <div class="image-container">
+          <img src="https://www.smarttalent.uy/innovaportal/file/2777/1/cv_edit.jpg" alt="CURRICULUM">
+        </div>
+        <div class="content">
+          <h2>CURRICULUM</h2>
+          <a href="https://curriculu-djg3.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card video-Render">
+        <div class="image-container">
+          <img src="https://i.ytimg.com/vi/VECKqrCpKGQ/maxresdefault.jpg" alt="VIDEO RENDER">
+        </div>
+        <div class="content">
+          <h2>VIDEO RENDER</h2>
+          <a href="https://youtu.be/Xv3f-AGwr9I"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card tienda-electronica">
+        <div class="image-container">
+          <img src="https://th.bing.com/th/id/OIP.rEt3BjUpqoMM_J5t7DwPhQHaEO?rs=1&pid=ImgDetMain" alt="TIENDA">
+        </div>
+        <div class="content">
+          <h2>TIENDA ELECTRONICA</h2>
+          <a href="https://tienda-electronica.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card Formulario">
+        <div class="image-container">
+          <img src="https://th.bing.com/th/id/OIP.kn_3C2j0mAI8a_NJ4m1gEgHaHa?rs=1&pid=ImgDetMain" alt="FORMULARIO">
+        </div>
+        <div class="content">
+          <h2>FORMULARIO</h2>
+          <a href="https://formulario1-9ai4.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card Pokemon">
+        <div class="image-container">
+          <img src="https://th.bing.com/th/id/OIP.C9s44_V9381NreUbBUxpJgHaEK?rs=1&pid=ImgDetMain" alt="POKEMON">
+        </div>
+        <div class="content">
+          <h2>POKEMON</h2>
+          <a href="https://pokemon-5vzh.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card Restaurante">
+        <div class="image-container">
+          <img src="https://th.bing.com/th/id/OIP.F0BkaSOdzAV3_nYfY1BusgHaE8?rs=1&pid=ImgDetMain" alt="RESTAURANTE">
+        </div>
+        <div class="content">
+          <h2>RESTAURANTE</h2>
+          <a href="https://restaurante-lrr4.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card Veterinaria">
+        <div class="image-container">
+          <img src="https://th.bing.com/th/id/R.2e63280ab02fea7ff5cc95f76230f650?rik=%2fV%2fdNUy3sPGA8g&pid=ImgRaw&r=0" alt="VETERINARIA">
+        </div>
+        <div class="content">
+          <h2>VETERINARIA</h2>
+          <a href="https://veterinaria-x0pm.onrender.com"><button>Leer más</button></a>
+        </div>
+      </div>
+
+      <div class="card Minijuego">
+        <div class="image-container">
+          <img src="https://alesalvarredy.github.io/JuegoDelAhorcadoAlura/imagenes/ahorcado-08.png" alt="AHORCADO">
+        </div>
+        <div class="content">
+          <h2>EL AHORCADO</h2>
+          <a href="https://ahorcado-gules-pi.vercel.app/"><button>Ver proyecto</button></a>
+        </div>
+      </div>
+
+      <div class="card comida-rapida">
+        <div class="image-container">
+          <img src="https://vivirenelmundo.com/wp-content/uploads/2016/11/comida-rapida.jpg" alt="Comida Rapida">
+        </div>
+        <div class="content">
+          <h2>COMIDA RAPIDA</h2>
+          <a href="https://comida-rapida.onrender.com"><button>Ver proyecto</button></a>
+        </div>
       </div>
     </div>
-
-    <div class="card quien-soy">
-      <div class="image-container">
-        <img src="https://midevocional.org/wp-content/uploads/2012/09/Quiensoyyo.png" alt="QUIEN SOY">
-      </div>
-      <div class="content">
-        <h2>QUIEN SOY</h2>
-        <a href="https://quien-soy-io24.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card curriculum">
-      <div class="image-container">
-        <img src="https://www.smarttalent.uy/innovaportal/file/2777/1/cv_edit.jpg" alt="CURRICULUM">
-      </div>
-      <div class="content">
-        <h2>CURRICULUM</h2>
-        <a href="https://curriculu-djg3.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card video-Render">
-      <div class="image-container">
-        <img src="https://i.ytimg.com/vi/VECKqrCpKGQ/maxresdefault.jpg" alt="VIDEO RENDER">
-      </div>
-      <div class="content">
-        <h2>VIDEO RENDER</h2>
-        <a href="https://youtu.be/Xv3f-AGwr9I"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card tienda-electronica">
-      <div class="image-container">
-        <img src="https://th.bing.com/th/id/OIP.rEt3BjUpqoMM_J5t7DwPhQHaEO?rs=1&pid=ImgDetMain" alt="TIENDA">
-      </div>
-      <div class="content">
-        <h2>TIENDA ELECTRONICA</h2>
-        <a href="https://tienda-electronica.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card Formulario">
-      <div class="image-container">
-        <img src="https://th.bing.com/th/id/OIP.kn_3C2j0mAI8a_NJ4m1gEgHaHa?rs=1&pid=ImgDetMain" alt="FORMULARIO">
-      </div>
-      <div class="content">
-        <h2>FORMULARIO</h2>
-        <a href="https://formulario1-9ai4.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card Pokemon">
-      <div class="image-container">
-        <img src="https://th.bing.com/th/id/OIP.C9s44_V9381NreUbBUxpJgHaEK?rs=1&pid=ImgDetMain" alt="POKEMON">
-      </div>
-      <div class="content">
-        <h2>POKEMON</h2>
-        <a href="https://pokemon-5vzh.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card Restaurante">
-      <div class="image-container">
-        <img src="https://th.bing.com/th/id/OIP.F0BkaSOdzAV3_nYfY1BusgHaE8?rs=1&pid=ImgDetMain" alt="RESTAURANTE">
-      </div>
-      <div class="content">
-        <h2>RESTAURANTE</h2>
-        <a href="https://restaurante-lrr4.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card Veterinaria">
-      <div class="image-container">
-        <img src="https://th.bing.com/th/id/R.2e63280ab02fea7ff5cc95f76230f650?rik=%2fV%2fdNUy3sPGA8g&pid=ImgRaw&r=0" alt="VETERINARIA">
-      </div>
-      <div class="content">
-        <h2>VETERINARIA</h2>
-        <a href="https://veterinaria-x0pm.onrender.com"><button>Leer más</button></a>
-      </div>
-    </div>
-
-    <div class="card Minijuego">
-      <div class="image-container">
-        <img src="https://alesalvarredy.github.io/JuegoDelAhorcadoAlura/imagenes/ahorcado-08.png" alt="VETERINARIA">
-      </div>
-      <div class="content">
-        <h2>EL AHORCADO</h2>
-        <a href="https://ahorcado-gules-pi.vercel.app/"><button>Leer más</button></a>
-      </div>
-    </div>
-
   </div>
 </body>
 </html>
